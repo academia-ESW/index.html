@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EOS + Coraje</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    h1 { margin-top: 0; }
+    .card {
+      border: 1px solid #5e7eb7;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    label { font-weight: 600; }
+    input[type="text"], input[type="email"], select {
+      padding: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: solid 1px #d1d5db;
+      background: #111827;
+      color: #fff;
+      cursor: pointer;
+    }
+    .muted { color: #6b7280; font-size: 14px; }
+    .kpi {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .kpi > div {
+      background: #ff3f46;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      color: #fff;
+      font-weight: 700;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>EOS + Coraje</h1>
+  <p class="muted">Completa el contexto y responde de 1 (muy en desacuerdo) a 5 (muy de acuerdo).</p>
+
+  <div class="card">
+    <div class="row">
+      <label>Empresa/Equipo</label>
+      <input id="company" type="text" placeholder="Nombre de la empresa o equipo">
+    </div>
+    <div class="row">
+      <label>Email (opcional)</label>
+      <input type="email" placeholder="tu@empresa.com">
+    </div>
+    <div class="row">
+      <label>Tipo de reunión</label>
+      <select id="meeting">
+        <option>Level 10</option>
+        <option>Trimestral</option>
+        <option>Focus Day</option>
+        <option>Anual</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>Tema/Issue</label>
+      <input id="issue" type="text" placeholder="Título del issue o decisión">
+    </div>
+    <div class="row">
+      <label>¿Es una piedra?</label>
+      <select id="rock">
+        <option>No</option>
+        <option>Sí</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>Riesgo percibido</label>
+      <select id="risk">
+        <option>1</option><option>2</option><option>3</option>
+        <option>4</option><option>5</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Esperanza</h3>
+    <div class="row">
+      <label>Este cambio nos acerca a metas valiosas.</label>
+      <select id="hope-0">
+        <option>1</option><option>2</option><option>3</option>
+        <option>4</option><option>5</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>Visualizo pasos concretos para lograr el cambio.</label>
+      <select id="hope-1">
+        <option>1</option><option>2</option><option>3</option>
+        <option>4</option><option>5</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Optimismo</h3>
+    <div class="row">
+      <label>Confío en un resultado positivo del cambio.</label>
+      <select id="opt-0">
+        <option>1</option><option>2</option><option>3</option>
+        <option>4</option><option>5</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>En general, espero que las cosas salgan bien.</label>
+      <select id="opt-1">
+        <option>1</option><option>2</option><option>3</option>
+        <option>4</option><option>5</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Indicadores</h3>
+    <div class="kpi">
+      <div id="kpi-hope">Esperanza: –</div>
+      <div id="kpi-opt">Optimismo: –</div>
+      <div id="kpi-risk">Riesgo: –</div>
+      <div id="kpi-score">Puntaje total: –</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button id="calc">Calcular</button>
+  </div>
+
+  <script>
+    function avg(values) {
+      const nums = values.map(v => parseInt(v, 10) || 0);
+      if (!nums.length) return 0;
+      return (nums.reduce((a,b) => a+b, 0) / nums.length).toFixed(1);
+    }
+
+    document.getElementById('calc').addEventListener('click', () => {
+      const hope = avg([
+        document.getElementById('hope-0').value,
+        document.getElementById('hope-1').value
+      ]);
+      const opt = avg([
+        document.getElementById('opt-0').value,
+        document.getElementById('opt-1').value
+      ]);
+      const risk = document.getElementById('risk').value || '–';
+      const score = ((parseFloat(hope) + parseFloat(opt)) / 2).toFixed(1);
+
+      document.getElementById('kpi-hope').textContent = `Esperanza: ${hope}`;
+      document.getElementById('kpi-opt').textContent = `Optimismo: ${opt}`;
+      document.getElementById('kpi-risk').textContent = `Riesgo: ${risk}`;
+      document.getElementById('kpi-score').textContent = `Puntaje total: ${score}`;
+    });
+  </script>
+</body>
+</html>
