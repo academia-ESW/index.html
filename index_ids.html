@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EOS + Coraje – Evaluador IDS</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+    body { max-width: 1040px; margin: 0 auto; padding: 24px; }
+    header { margin-bottom: 12px; }
+    h1 { margin: 0 0 8px 0; }
+    .muted { color: #6b7280; font-size: 14px; }
+    .grid { display: grid; gap: 16px; }
+    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; }
+    .row { display: grid; gap: 8px; grid-template-columns: 1fr 220px; align-items: center; }
+    label { font-weight: 600; }
+    input[type="text"], input[type="email"], select { padding: 8px; border: 1px solid #d1d5db; border-radius: 10px; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    button { padding: 10px 14px; border-radius: 10px; border: 1px solid #d1d5db; background: #f9fafb; cursor: pointer; }
+    button.primary { background: #111827; color: #fff; border-color: #111827; }
+    .kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .kpi div { background: #f3f4f6; padding: 12px; border-radius: 10px; text-align: center; }
+    .badge { display:inline-block; padding:4px 8px; border-radius:999px; background:#eef2ff; color:#3730a3; font-size:12px; }
+    .hidden { display:none; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EOS + Coraje – Evaluador IDS</h1>
+    <p class="muted">Apoya el proceso IDS de EOS con el modelo dual del coraje (urgencia, significado, autoeficacia, decisión) y la medición de esperanza, optimismo y coraje.</p>
+  </header>
+
+  <section class="card grid">
+    <h2>Contexto EOS</h2>
+    <div class="row"><label for="company">Empresa/Equipo</label><input id="company" type="text" placeholder="Nombre de la empresa o equipo" /></div>
+    <div class="row"><label for="email">Email (opcional para reporte)</label><input id="email" type="email" placeholder="tu@empresa.com" /></div>
+    <div class="row"><label for="meeting">Tipo de reunión</label>
+      <select id="meeting">
+        <option value="Level 10">Level 10</option>
+        <option value="Trimestral">Trimestral</option>
+        <option value="Focus Day">Focus Day</option>
+        <option value="Anual">Anual</option>
+      </select>
+    </div>
+    <div class="row"><label for="issue">Tema/Issue</label><input id="issue" type="text" placeholder="Título del issue o decisión" /></div>
+    <div class="row"><label for="rock">¿Impacta algún Rock?</label>
+      <select id="rock"><option>No</option><option>Sí</option></select>
+    </div>
+    <div class="row"><label for="risk">Riesgo percibido</label>
+      <select id="risk"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+    </div>
+  </section>
+
+  <section class="card grid" id="assessment">
+    <h2>Evaluación humana</h2>
+    <p class="muted">Responde de 1 (muy en desacuerdo) a 5 (muy de acuerdo).</p>
+
+    <h3>Esperanza</h3>
+    <div class="row"><label>Este cambio nos acerca a metas valiosas.</label><select id="hope-0"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Visualizo pasos concretos para lograr el cambio.</label><select id="hope-1"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+
+    <h3>Optimismo</h3>
+    <div class="row"><label>Confío en un resultado positivo del cambio.</label><select id="opt-0"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>En general, espero que esto salga bien.</label><select id="opt-1"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+
+    <h3>Coraje</h3>
+    <div class="row"><label>Aunque hay riesgos, estoy dispuesto a actuar.</label><select id="cou-0"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Mantengo la firmeza ante presión social o temor al error.</label><select id="cou-1"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+
+    <h3>Filtro de Coraje (Modelo 2024)</h3>
+    <div class="row"><label>Urgencia: requiere acción inmediata.</label><select id="urg"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Significado: está alineado con visión y valores.</label><select id="mean"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Autoeficacia: contamos con capacidad y recursos.</label><select id="eff"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Decisión: el equipo está dispuesto a comprometerse hoy.</label><select id="dec"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+
+    <div class="actions">
+      <button class="primary" id="btn-score">Calcular y sugerir</button>
+      <button id="btn-reset">Limpiar</button>
+      <button id="btn-export">Exportar JSON</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="results">
+    <h2>Resultados</h2>
+    <div class="kpi">
+      <div><div class="muted">Esperanza</div><div id="k1" style="font-size:22px;font-weight:700;">0</div></div>
+      <div><div class="muted">Optimismo</div><div id="k2" style="font-size:22px;font-weight:700;">0</div></div>
+      <div><div class="muted">Coraje</div><div id="k3" style="font-size:22px;font-weight:700;">0</div></div>
+      <div><div class="muted">Filtro Coraje (promedio)</div><div id="k4" style="font-size:22px;font-weight:700;">0</div></div>
+    </div>
+    <p><span class="badge" id="segment">Segmento</span></p>
+    <h3>Sugerencias EOS</h3>
+    <ul id="suggestions"></ul>
+    <div class="actions">
+      <button id="btn-ai">Pedir sugerencias a IA (opcional)</button>
+      <button id="btn-save">Guardar en el navegador</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="history">
+    <h2>Historial local</h2>
+    <div id="table"></div>
+    <div class="actions"><button id="btn-clear-store">Borrar historial</button></div>
+  </section>
+
+  <script>
+    function avg(a){ const x=a.filter(v=>!isNaN(v)); return x.length ? +(x.reduce((p,c)=>p+c,0)/x.length).toFixed(2) : 0; }
+
+    function segment(d){
+      if(d.courage>=4 && d.hope>=3.5) return 'Líder del cambio';
+      if(d.courage>=3 && d.optimism>=3) return 'Adoptante temprano';
+      if(d.courage<3 && d.hope<3) return 'Resistente (necesita soporte)';
+      return 'Intermedio';
+    }
+
+    function suggest(d, ctx){
+      const recs=[];
+      const {meeting, rock, risk} = ctx;
+      if(d.filter<3){
+        recs.push('Volver a IDS: el bloqueo no es técnico sino emocional. Clarificar urgencia, significado o recursos.');
+      }
+      if(d.courage<3){
+        recs.push('Definir una “primera victoria” en 7 días con dueño y fecha.');
+      }
+      if(d.hope<3){
+        recs.push('Vincular este issue con la visión/VTO y un Rock concreto.');
+      }
+      if(d.optimism<3){
+        recs.push('Compartir evidencia interna de beneficios y quick wins.');
+      }
+      if(rock==='Sí' && d.filter>=3.5){
+        recs.push('Convertir en To‑Do esta semana y revisar en la Level 10.');
+      }
+      if(risk>=4){
+        recs.push('Plan de mitigación de riesgo con 3 acciones y responsable.');
+      }
+      recs.push(`Contexto: ${meeting}. Registrar en Scorecard: % decisiones tomadas en sesión.`);
+      return recs;
+    }
+
+    function getVals(ids){ return ids.map(id=>+document.getElementById(id).value); }
+
+    function score(){
+      const hope = avg(getVals(['hope-0','hope-1']));
+      const opt  = avg(getVals(['opt-0','opt-1']));
+      const cou  = avg(getVals(['cou-0','cou-1']));
+      const fil  = avg(getVals(['urg','mean','eff','dec']));
+      return { hope, optimism: opt, courage: cou, filter: fil };
+    }
+
+    function render(d, ctx){
+      document.getElementById('k1').textContent=d.hope;
+      document.getElementById('k2').textContent=d.optimism;
+      document.getElementById('k3').textContent=d.courage;
+      document.getElementById('k4').textContent=d.filter;
+      document.getElementById('segment').textContent=segment(d);
+      const recs=suggest(d, ctx);
+      const ul=document.getElementById('suggestions');
+      ul.innerHTML = recs.map(x=>`<li>${x}</li>`).join('');
+      document.getElementById('results').classList.remove('hidden');
+      renderHistory();
+    }
+
+    function saveLocal(payload){
+      const data = JSON.parse(localStorage.getItem('eos_coraje')||'[]');
+      data.push(payload);
+      localStorage.setItem('eos_coraje', JSON.stringify(data));
+    }
+
+    function renderHistory(){
+      const data = JSON.parse(localStorage.getItem('eos_coraje')||'[]');
+      if(!data.length){ document.getElementById('history').classList.add('hidden'); return; }
+      const rows = data.map(r=>`<tr>
+        <td>${new Date(r.ts).toLocaleString()}</td>
+        <td>${r.company}</td>
+        <td>${r.meeting}</td>
+        <td>${r.issue}</td>
+        <td>${r.hope}</td><td>${r.optimism}</td><td>${r.courage}</td><td>${r.filter}</td>
+        <td>${r.segment}</td>
+      </tr>`).join('');
+      document.getElementById('table').innerHTML = `
+        <table>
+          <thead><tr><th>Fecha</th><th>Empresa</th><th>Reunión</th><th>Issue</th><th>Esperanza</th><th>Optimismo</th><th>Coraje</th><th>Filtro</th><th>Segmento</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+      document.getElementById('history').classList.remove('hidden');
+    }
+
+    async function callAI(payload){
+      alert('Implementa aquí la llamada a tu backend/proxy que use la API de IA.');
+      return 'Sugerencias IA de ejemplo: 1) Reforzar V/TO en apertura; 2) Rotar dueño del Issue; 3) Definir To‑Dos con fecha y scoreado en L10.';
+    }
+
+    document.getElementById('btn-score').addEventListener('click', ()=>{
+      const d = score();
+      const ctx = {
+        company: document.getElementById('company').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        meeting: document.getElementById('meeting').value,
+        issue: document.getElementById('issue').value.trim(),
+        rock: document.getElementById('rock').value,
+        risk: +document.getElementById('risk').value
+      };
+      render(d, ctx);
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', ()=>{ location.reload(); });
+
+    document.getElementById('btn-export').addEventListener('click', ()=>{
+      const d = score();
+      const ctx = {
+        company: document.getElementById('company').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        meeting: document.getElementById('meeting').value,
+        issue: document.getElementById('issue').value.trim(),
+        rock: document.getElementById('rock').value,
+        risk: +document.getElementById('risk').value
+      };
+      const blob = new Blob([JSON.stringify({ ...d, ...ctx }, null, 2)], {type:'application/json'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'eos_coraje.json'; a.click();
+    });
+
+    document.getElementById('btn-save').addEventListener('click', ()=>{
+      const d = score();
+      const ctx = {
+        company: document.getElementById('company').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        meeting: document.getElementById('meeting').value,
+        issue: document.getElementById('issue').value.trim(),
+        rock: document.getElementById('rock').value,
+        risk: +document.getElementById('risk').value
+      };
+      const payload = { ts: new Date().toISOString(), ...d, ...ctx, segment: segment(d) };
+      saveLocal(payload); renderHistory();
+    });
+
+    document.getElementById('btn-clear-store').addEventListener('click', ()=>{ localStorage.removeItem('eos_coraje'); renderHistory(); });
+
+    document.getElementById('btn-ai').addEventListener('click', async ()=>{
+      const d = score();
+      const ctx = {
+        company: document.getElementById('company').value.trim(),
+        meeting: document.getElementById('meeting').value,
+        issue: document.getElementById('issue').value.trim()
+      };
+      const ai = await callAI({ ...d, ...ctx });
+      const ul = document.getElementById('suggestions');
+      ul.innerHTML += `<li><strong>IA:</strong> ${ai}</li>`;
+    });
+
+    renderHistory();
+  </script>
+</body>
+</html>
