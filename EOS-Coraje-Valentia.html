@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="es"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;EOS + Coraje&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width: 920px; margin: 0 auto; padding: 24px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-bottom: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.row { display:grid; grid-template-columns: 1fr 220px; gap: 10px; align-items: center; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>label { font-weight: 600; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input[type="text"], input[type="email"], select { padding: 8px; border: 1px solid #d1d5db; border-radius: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button { padding: 10px 14px; border-radius: 10px; border:1px solid #d1d5db; background:#111827; color:#fff; cursor:pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.muted { color:#6b7280; font-size:14px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi { display:grid; grid-template-columns: repeat(4,1fr); gap:12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kpi div { background:#f3f4f6; padding:12px; border-radius:10px; text-align:center; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.badge { display:inline-block; padding:4px 8px; border-radius:999px; background:#eef2ff; color:#3730a3; font-size:12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hidden { display:none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;EOS + Coraje&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p class="muted"&gt;Completa el contexto y responde de 1 (muy en desacuerdo) a 5 (muy de acuerdo).&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Empresa/Equipo&lt;/label&gt;&lt;input id="company" type="text" placeholder="Nombre de la empresa o equipo"/&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Email (opcional)&lt;/label&gt;&lt;input id="email" type="email" placeholder="tu@empresa.com"/&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Tipo de reunión&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;select id="meeting"&gt;&lt;option&gt;Level 10&lt;/option&gt;&lt;option&gt;Trimestral&lt;/option&gt;&lt;option&gt;Focus Day&lt;/option&gt;&lt;option&gt;Anual&lt;/option&gt;&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Tema/Issue&lt;/label&gt;&lt;input id="issue" type="text" placeholder="Título del issue o decisión"/&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;¿Impacta algún Rock?&lt;/label&gt;&lt;select id="rock"&gt;&lt;option&gt;No&lt;/option&gt;&lt;option&gt;Sí&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Riesgo percibido&lt;/label&gt;&lt;select id="risk"&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Esperanza&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Este cambio nos acerca a metas valiosas.&lt;/label&gt;&lt;select id="hope-0"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Visualizo pasos concretos para lograr el cambio.&lt;/label&gt;&lt;select id="hope-1"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Optimismo&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Confío en un resultado positivo del cambio.&lt;/label&gt;&lt;select id="opt-0"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;En general, espero que esto salga bien.&lt;/label&gt;&lt;select id="opt-1"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Coraje&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Aunque hay riesgos, estoy dispuesto a actuar.&lt;/label&gt;&lt;select id="cou-0"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Mantengo la firmeza ante presión social o temor al error.&lt;/label&gt;&lt;select id="cou-1"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Filtro de Coraje (Modelo 2024)&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Urgencia&lt;/label&gt;&lt;select id="urg"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Significado&lt;/label&gt;&lt;select id="mean"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Autoeficacia&lt;/label&gt;&lt;select id="eff"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="row"&gt;&lt;label&gt;Decisión&lt;/label&gt;&lt;select id="dec"&gt;&lt;option&gt;&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="submit"&gt;Calcular y guardar&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="panel" class="card hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Resultados&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="kpi"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="muted"&gt;Esperanza&lt;/div&gt;&lt;div id="kHope" style="font-size:22px;font-weight:700;"&gt;0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="muted"&gt;Optimismo&lt;/div&gt;&lt;div id="kOpt" style="font-size:22px;font-weight:700;"&gt;0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="muted"&gt;Coraje&lt;/div&gt;&lt;div id="kCou" style="font-size:22px;font-weight:700;"&gt;0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;&lt;div class="muted"&gt;Filtro&lt;/div&gt;&lt;div id="kFil" style="font-size:22px;font-weight:700;"&gt;0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&lt;span class="badge" id="seg"&gt;&lt;/span&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Sugerencias EOS&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="recs"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Sugerencias IA&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="sugg"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function avg(values){ const a = values.filter(v=&gt;!isNaN(v)); return a.length? (a.reduce((x,y)=&gt;x+y,0)/a.length):0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function segment(d){ if(d.courage&gt;=4 &amp;&amp; d.hope&gt;=3.5) return 'Líder del cambio'; if(d.courage&gt;=3 &amp;&amp; d.optimism&gt;=3) return 'Adoptante temprano'; if(d.courage&lt;3 &amp;&amp; d.hope&lt;3) return 'Resistente (necesita soporte)'; return 'Intermedio'; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('submit').addEventListener('click', ()=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const payload = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>company: document.getElementById('company').value || '',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>email: document.getElementById('email').value || '',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>meeting: document.getElementById('meeting').value,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>issue: document.getElementById('issue').value || '',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>rock: document.getElementById('rock').value,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>risk: document.getElementById('risk').value,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>hope: avg([+document.getElementById('hope-0').value, +document.getElementById('hope-1').value]),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>optimism: avg([+document.getElementById('opt-0').value, +document.getElementById('opt-1').value]),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>courage: avg([+document.getElementById('cou-0').value, +document.getElementById('cou-1').value]),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>urgency: +document.getElementById('urg').value,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>meaning: +document.getElementById('mean').value,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>efficacy: +document.getElementById('eff').value,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>decision: +document.getElementById('dec').value</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>google.script.run.withSuccessHandler(({ok, segment:seg, filter_avg, recommendations})=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('kHope').textContent = payload.hope.toFixed(2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('kOpt').textContent = payload.optimism.toFixed(2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('kCou').textContent = payload.courage.toFixed(2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('kFil').textContent = filter_avg.toFixed(2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('seg').textContent = seg;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('recs').textContent = recommendations;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('panel').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>google.script.run.withSuccessHandler(({suggestions})=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>document.getElementById('sugg').innerText = suggestions;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}).getAISuggestions(payload);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}).saveResponse(payload);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
