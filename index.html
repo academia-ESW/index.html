@@ -1,62 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EOS + Coraje</title>
   <style>
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 24px;
-      line-height: 1.5;
-    }
-    h1 { margin-top: 0; }
-    .card {
-      border: 1px solid #5e7eb7;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 16px;
-    }
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; max-width: 920px; margin: 0 auto; padding: 24px; }
+    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    .row { display:grid; grid-template-columns: 1fr 220px; gap: 10px; align-items: center; }
     label { font-weight: 600; }
-    input[type="text"], input[type="email"], select {
-      padding: 8px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    button {
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: solid 1px #d1d5db;
-      background: #111827;
-      color: #fff;
-      cursor: pointer;
-    }
-    .muted { color: #6b7280; font-size: 14px; }
-    .kpi {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    .kpi > div {
-      background: #ff3f46;
-      padding: 12px;
-      border-radius: 10px;
-      text-align: center;
-      color: #fff;
-      font-weight: 700;
-    }
-    .hidden { display: none; }
+    input[type="text"], input[type="email"], select { padding: 8px; border: 1px solid #d1d5db; border-radius: 10px; }
+    button { padding: 10px 14px; border-radius: 10px; border:1px solid #d1d5db; background:#111827; color:#fff; cursor:pointer; }
+    .muted { color:#6b7280; font-size:14px; }
+    .kpi { display:grid; grid-template-columns: repeat(4,1fr); gap:12px; }
+    .kpi div { background:#f3f4f6; padding:12px; border-radius:10px; text-align:center; }
+    .badge { display:inline-block; padding:4px 8px; border-radius:999px; background:#eef2ff; color:#3730a3; font-size:12px; }
+    .hidden { display:none; }
   </style>
 </head>
 <body>
@@ -64,116 +23,86 @@
   <p class="muted">Completa el contexto y responde de 1 (muy en desacuerdo) a 5 (muy de acuerdo).</p>
 
   <div class="card">
-    <div class="row">
-      <label>Empresa/Equipo</label>
-      <input id="company" type="text" placeholder="Nombre de la empresa o equipo">
+    <div class="row"><label>Empresa/Equipo</label><input id="company" type="text" placeholder="Nombre de la empresa o equipo"/></div>
+    <div class="row"><label>Email (opcional)</label><input id="email" type="email" placeholder="tu@empresa.com"/></div>
+    <div class="row"><label>Tipo de reunión</label>
+      <select id="meeting"><option>Level 10</option><option>Trimestral</option><option>Focus Day</option><option>Anual</option></select>
     </div>
-    <div class="row">
-      <label>Email (opcional)</label>
-      <input type="email" placeholder="tu@empresa.com">
-    </div>
-    <div class="row">
-      <label>Tipo de reunión</label>
-      <select id="meeting">
-        <option>Level 10</option>
-        <option>Trimestral</option>
-        <option>Focus Day</option>
-        <option>Anual</option>
-      </select>
-    </div>
-    <div class="row">
-      <label>Tema/Issue</label>
-      <input id="issue" type="text" placeholder="Título del issue o decisión">
-    </div>
-    <div class="row">
-      <label>¿Es una piedra?</label>
-      <select id="rock">
-        <option>No</option>
-        <option>Sí</option>
-      </select>
-    </div>
-    <div class="row">
-      <label>Riesgo percibido</label>
-      <select id="risk">
-        <option>1</option><option>2</option><option>3</option>
-        <option>4</option><option>5</option>
-      </select>
-    </div>
+    <div class="row"><label>Tema/Issue</label><input id="issue" type="text" placeholder="Título del issue o decisión"/></div>
+    <div class="row"><label>¿Impacta algún Rock?</label><select id="rock"><option>No</option><option>Sí</option></select></div>
+    <div class="row"><label>Riesgo percibido</label><select id="risk"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
   </div>
 
   <div class="card">
     <h3>Esperanza</h3>
-    <div class="row">
-      <label>Este cambio nos acerca a metas valiosas.</label>
-      <select id="hope-0">
-        <option>1</option><option>2</option><option>3</option>
-        <option>4</option><option>5</option>
-      </select>
-    </div>
-    <div class="row">
-      <label>Visualizo pasos concretos para lograr el cambio.</label>
-      <select id="hope-1">
-        <option>1</option><option>2</option><option>3</option>
-        <option>4</option><option>5</option>
-      </select>
-    </div>
-  </div>
+    <div class="row"><label>Este cambio nos acerca a metas valiosas.</label><select id="hope-0"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Visualizo pasos concretos para lograr el cambio.</label><select id="hope-1"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
 
-  <div class="card">
     <h3>Optimismo</h3>
-    <div class="row">
-      <label>Confío en un resultado positivo del cambio.</label>
-      <select id="opt-0">
-        <option>1</option><option>2</option><option>3</option>
-        <option>4</option><option>5</option>
-      </select>
-    </div>
-    <div class="row">
-      <label>En general, espero que las cosas salgan bien.</label>
-      <select id="opt-1">
-        <option>1</option><option>2</option><option>3</option>
-        <option>4</option><option>5</option>
-      </select>
-    </div>
+    <div class="row"><label>Confío en un resultado positivo del cambio.</label><select id="opt-0"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>En general, espero que esto salga bien.</label><select id="opt-1"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+
+    <h3>Coraje</h3>
+    <div class="row"><label>Aunque hay riesgos, estoy dispuesto a actuar.</label><select id="cou-0"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Mantengo la firmeza ante presión social o temor al error.</label><select id="cou-1"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+
+    <h3>Filtro de Coraje (Modelo 2024)</h3>
+    <div class="row"><label>Urgencia</label><select id="urg"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Significado</label><select id="mean"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Autoeficacia</label><select id="eff"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    <div class="row"><label>Decisión</label><select id="dec"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+
+    <button id="submit">Calcular y guardar</button>
   </div>
 
-  <div class="card">
-    <h3>Indicadores</h3>
+  <div id="panel" class="card hidden">
+    <h2>Resultados</h2>
     <div class="kpi">
-      <div id="kpi-hope">Esperanza: –</div>
-      <div id="kpi-opt">Optimismo: –</div>
-      <div id="kpi-risk">Riesgo: –</div>
-      <div id="kpi-score">Puntaje total: –</div>
+      <div><div class="muted">Esperanza</div><div id="kHope" style="font-size:22px;font-weight:700;">0</div></div>
+      <div><div class="muted">Optimismo</div><div id="kOpt" style="font-size:22px;font-weight:700;">0</div></div>
+      <div><div class="muted">Coraje</div><div id="kCou" style="font-size:22px;font-weight:700;">0</div></div>
+      <div><div class="muted">Filtro</div><div id="kFil" style="font-size:22px;font-weight:700;">0</div></div>
     </div>
-  </div>
-
-  <div class="card">
-    <button id="calc">Calcular</button>
+    <p><span class="badge" id="seg"></span></p>
+    <h3>Sugerencias EOS</h3>
+    <div id="recs"></div>
+    <h3>Sugerencias IA</h3>
+    <div id="sugg"></div>
   </div>
 
   <script>
-    function avg(values) {
-      const nums = values.map(v => parseInt(v, 10) || 0);
-      if (!nums.length) return 0;
-      return (nums.reduce((a,b) => a+b, 0) / nums.length).toFixed(1);
-    }
+    function avg(values){ const a = values.filter(v=>!isNaN(v)); return a.length? (a.reduce((x,y)=>x+y,0)/a.length):0; }
+    function segment(d){ if(d.courage>=4 && d.hope>=3.5) return 'Líder del cambio'; if(d.courage>=3 && d.optimism>=3) return 'Adoptante temprano'; if(d.courage<3 && d.hope<3) return 'Resistente (necesita soporte)'; return 'Intermedio'; }
 
-    document.getElementById('calc').addEventListener('click', () => {
-      const hope = avg([
-        document.getElementById('hope-0').value,
-        document.getElementById('hope-1').value
-      ]);
-      const opt = avg([
-        document.getElementById('opt-0').value,
-        document.getElementById('opt-1').value
-      ]);
-      const risk = document.getElementById('risk').value || '–';
-      const score = ((parseFloat(hope) + parseFloat(opt)) / 2).toFixed(1);
+    document.getElementById('submit').addEventListener('click', ()=>{
+      const payload = {
+        company: document.getElementById('company').value || '',
+        email: document.getElementById('email').value || '',
+        meeting: document.getElementById('meeting').value,
+        issue: document.getElementById('issue').value || '',
+        rock: document.getElementById('rock').value,
+        risk: document.getElementById('risk').value,
+        hope: avg([+document.getElementById('hope-0').value, +document.getElementById('hope-1').value]),
+        optimism: avg([+document.getElementById('opt-0').value, +document.getElementById('opt-1').value]),
+        courage: avg([+document.getElementById('cou-0').value, +document.getElementById('cou-1').value]),
+        urgency: +document.getElementById('urg').value,
+        meaning: +document.getElementById('mean').value,
+        efficacy: +document.getElementById('eff').value,
+        decision: +document.getElementById('dec').value
+      };
 
-      document.getElementById('kpi-hope').textContent = `Esperanza: ${hope}`;
-      document.getElementById('kpi-opt').textContent = `Optimismo: ${opt}`;
-      document.getElementById('kpi-risk').textContent = `Riesgo: ${risk}`;
-      document.getElementById('kpi-score').textContent = `Puntaje total: ${score}`;
+      google.script.run.withSuccessHandler(({ok, segment:seg, filter_avg, recommendations})=>{
+        document.getElementById('kHope').textContent = payload.hope.toFixed(2);
+        document.getElementById('kOpt').textContent = payload.optimism.toFixed(2);
+        document.getElementById('kCou').textContent = payload.courage.toFixed(2);
+        document.getElementById('kFil').textContent = filter_avg.toFixed(2);
+        document.getElementById('seg').textContent = seg;
+        document.getElementById('recs').textContent = recommendations;
+        document.getElementById('panel').classList.remove('hidden');
+        google.script.run.withSuccessHandler(({suggestions})=>{
+          document.getElementById('sugg').innerText = suggestions;
+        }).getAISuggestions(payload);
+      }).saveResponse(payload);
     });
   </script>
 </body>
